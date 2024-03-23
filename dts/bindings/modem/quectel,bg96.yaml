@@ -1,0 +1,26 @@
+# Copyright (c) 2020 Analog Life LLC
+# SPDX-License-Identifier: Apache-2.0
+
+description: Quectel BG96 modem
+
+compatible: "quectel,bg96"
+
+include: uart-device.yaml
+
+properties:
+  mdm-power-gpios:
+    type: phandle-array
+    required: true
+
+  mdm-reset-gpios:
+    type: phandle-array
+    required: true
+
+  mdm-dtr-gpios:
+    type: phandle-array
+
+  mdm-wdisable-gpios:
+    type: phandle-array
+
+  mdm-sim-select-gpios:
+    type: phandle-array

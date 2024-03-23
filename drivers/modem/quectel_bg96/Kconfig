@@ -1,0 +1,83 @@
+# Quectel BG96 driver options
+
+# Copyright (c) 2020 Analog Life LLC
+# SPDX-License-Identifier: Apache-2.0
+
+config MODEM_QUECTEL_BG96
+	bool "Quectel modem driver"
+	select MODEM_CONTEXT
+	select MODEM_CMD_HANDLER
+	select MODEM_IFACE_UART
+	select MODEM_SOCKET
+	select NET_SOCKETS_OFFLOAD
+	help
+	  Choose this setting to enable quectel BG96 LTE-CatM1/NB-IoT modem
+	  driver.
+
+if MODEM_QUECTEL_BG96
+
+config MODEM_QUECTEL_BG96_RX_STACK_SIZE
+	int "Stack size for the quectel BG96 modem driver RX thread"
+	default 1028
+	help
+	  This stack is used by the quectel BG96 RX thread.
+
+config MODEM_QUECTEL_BG96_RX_WORKQ_STACK_SIZE
+	int "Stack size for the quectel BG96 modem driver work queue"
+	default 2048
+	help
+	  This stack is used by the work queue to pass off net_pkt data
+	  to the rest of the network stack, letting the rx thread continue
+	  processing data.
+
+config MODEM_QUECTEL_BG96_APN
+	string "APN for establishing network connection"
+	default "internet"
+	help
+	  This setting is used to set the APN name for the network connection
+	  context.  This value is specific to the network provider and may
+	  need to be changed.
+
+config MODEM_QUECTEL_BG96_USERNAME
+	string "Username for establishing network connection"
+	default ""
+	help
+	  This setting is used to set the User name for the network connection
+	  context.  This value is specific to the network provider and may
+	  need to be changed.
+
+config MODEM_QUECTEL_BG96_PASSWORD
+	string "Password for establishing network connection"
+	default ""
+	help
+	  This setting is used to set the Password for the network connection
+	  context.  This value is specific to the network provider and may
+	  need to be changed.
+
+config MODEM_QUECTEL_BG96_INIT_PRIORITY
+	int "quectel BG96 driver init priority"
+	default 80
+	help
+	  quectel BG96 device driver initialization priority.
+	  Do not mess with it unless you know what you are doing.
+	  Note that the priority needs to be lower than the net stack
+	  so that it can start before the networking sub-system.
+
+config MODEM_QUECTEL_BG96_DNS_SERVER1
+	string "BG96 DNS server 1"
+	help
+	  DNS server IP address 1. The address can be either IPv4 or IPv6
+	  address. An optional port number can be given.
+	  Following syntax is supported:
+	  192.0.2.1
+	  192.0.2.1:5353
+	  2001:db8::1
+	  [2001:db8::1]:5353
+	  It is not mandatory to use this Kconfig option at all.
+
+config MODEM_QUECTEL_BG96_DNS_SERVER2
+	string "BG96 DNS server 2"
+	help
+	  See help in "DNS server 1" option.
+
+endif

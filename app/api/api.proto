@@ -1,0 +1,16 @@
+// To keep things simple, the entire API will be in a single file.
+syntax = "proto3";
+
+message StatusUpdateRequest {
+    string device_id = 1;
+    int32 boot_count = 2;
+}
+
+message StatusUpdateResponse {
+    string message = 1;
+}
+
+// IOTEMBSYS9: Create an OTA request and response. The request should accept the
+// current version and device ID (at a minimum), and the response should return a
+// path or URL for the image, and some indication of whether the OTA is required.
+// Hint: you will likely need to modify the api.options file for sending strings

@@ -1,0 +1,3 @@
+if MODEM
+rsource "quectel_bg96/Kconfig"
+endif # MODEM

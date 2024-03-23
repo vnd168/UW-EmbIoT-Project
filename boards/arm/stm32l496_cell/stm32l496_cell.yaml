@@ -1,0 +1,19 @@
+identifier: stm32l496_cell
+name: ST STM32L496G Discovery with Modem
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+  - xtools
+ram: 320
+flash: 1024
+supported:
+  - arduino_i2c
+  - pwm
+  - i2c
+  - spi
+  - gpio
+  - counter
+  - sdhc
+  - adc

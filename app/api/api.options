@@ -1,0 +1,5 @@
+StatusUpdateRequest.device_id max_size:64 fixed_length:true
+StatusUpdateResponse.message max_size:32 fixed_length:true
+OTAUpdateRequest.device_id max_size:64 fixed_length:true
+OTAUpdateRequest.version max_size:32 fixed_length:true
+OTAUpdateResponse.path max_size:128 fixed_length:true
