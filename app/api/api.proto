@@ -14,3 +14,22 @@ message StatusUpdateResponse {
 // current version and device ID (at a minimum), and the response should return a
 // path or URL for the image, and some indication of whether the OTA is required.
 // Hint: you will likely need to modify the api.options file for sending strings
+enum OTAState{
+    OTA_STATE_NONE = 0;
+    OTA_STATE_IN_PROGRESS = 1;
+    OTA_STATE_DOWNLOADED = 2;
+    OTA_STATE_PERSISTED = 3;
+    OTA_STATE_FAILED = 4;
+}
+
+message OTAUpdateRequest {
+    string device_id = 123;
+    OTAState state = 2;
+    // the current version that is running
+    string version = 3;
+}
+
+message OTAUpdateResponse {
+    bool do_update = 1;
+    string path = 2;
+}
